@@ -15,6 +15,7 @@ class TodaysPredictions extends StatefulWidget {
 
 class _TodaysPredictionsState extends State<TodaysPredictions> {
   var _rotation = 0.0;
+  var _isRotating = false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +61,12 @@ class _TodaysPredictionsState extends State<TodaysPredictions> {
               const SizedBox(height: 32),
               OutlinedButton(
                 onPressed: () async {
+                  if (_isRotating) {
+                    return;
+                  }
                   setState(() {
                     _rotation += 15 + Random().nextDouble();
+                    _isRotating = true;
                   });
 
                   final response = await http.get(Uri.parse('https://api.quotable.io/random'));
@@ -90,6 +95,9 @@ class _TodaysPredictionsState extends State<TodaysPredictions> {
                       ],
                     ),
                   );
+                  setState(() {
+                    _isRotating = false;
+                  });
                 },
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.redAccent,
