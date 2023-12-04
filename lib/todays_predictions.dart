@@ -64,21 +64,17 @@ class _TodaysPredictionsState extends State<TodaysPredictions> {
                     _rotation += 15 + Random().nextDouble();
                   });
 
-                  final response = await http.get(Uri.parse('http://yerkee.com/api/fortune'));
-                  final fortune = jsonDecode(response.body)['fortune'];
+                  final response = await http.get(Uri.parse('https://api.quotable.io/random'));
+                  final json = jsonDecode(response.body) as Map<String, dynamic>;
+                  final quote = json['content'] as String;
+                  final author = json['author'] as String;
+
                   await Future.delayed(const Duration(seconds: 9));
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: const Text(
-                        'Your fortune is:',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontFamily: 'YuseiMagic',
-                        ),
-                      ),
                       content: Text(
-                        fortune,
+                        '$quote\n\n$author',
                         style: const TextStyle(
                           fontSize: 18,
                           fontFamily: 'YuseiMagic',
