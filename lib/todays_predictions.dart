@@ -11,17 +11,34 @@ class _TodaysPredictionsState extends State<TodaysPredictions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const FittedBox(
+                child: Text(
+                  'Try your fortune!',
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontFamily: 'YuseiMagic',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
+              Image.asset('assets/images/circle.png'),
+              const SizedBox(height: 32),
+              OutlinedButton(
+                onPressed: () {},
+                child: const Text('Predict',
+                    style: TextStyle(
+                      fontSize: 48,
+                      fontFamily: 'YuseiMagic',
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
     );

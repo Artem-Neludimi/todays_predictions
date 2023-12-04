@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: const ColorScheme.dark(),
+        colorScheme: const ColorScheme.light(),
         useMaterial3: true,
       ),
       home: const TodaysPredictions(),
